@@ -1,3 +1,12 @@
+# Fork of OpenJFX (see below) to try to circumvent Apples App Store problem
+
+- Bug trying to fix: https://bugs.openjdk.org/browse/JDK-8289521
+- Fix: https://github.com/1tchy/jfx/commit/091c907ea06e4e84138110711520d6552f2009c5
+- Then building dylib file with `./gradlew build -PCOMPILE_WEBKIT=true -PCOMPILE_MEDIA=true -xtest`
+- Verify the problematic method call is no more there: `nm -g -A modules/javafx.web/build/libs/mac/libjfxwebkit.dylib | grep cache_simulate_memory_warning_event`
+- Adding it to Git as a "poor mans release": `git add --force modules/javafx.web/build/libs/mac/libjfxwebkit.dylib`
+- dylib is now available here: https://github.com/1tchy/jfx/raw/jfx21/modules/javafx.web/build/libs/mac/libjfxwebkit.dylib
+
 # OpenJFX
 
 OpenJFX is an open source, next generation client application platform for desktop, mobile and embedded systems based on JavaSE. It is a collaborative effort by many individuals and companies with the goal of producing a modern, efficient, and fully featured toolkit for developing rich client applications. This is the open source project where we develop JavaFX.
